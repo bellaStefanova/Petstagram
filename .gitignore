@@ -1,0 +1,7 @@
+.venv
+troubleshooting.docx
+*.tmp
+*.docx
+*.sqlite3
+__pychache__
+*.pyc
