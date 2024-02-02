@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petstagram</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    {% block styles %}
+    {% endblock %}
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+            <a href="{% url 'home' %}">Petstagram</a>
+            <a href="{% url 'home' %}"><i class="fa-solid fa-paw"></i></a>
+            {% block login_register %}
+            {% endblock %}
+        </div>
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <div class="footer">
+            <p>Petstagram &copy; 2024</p>
+        </div>
+    </div>
+</body>
+</html>

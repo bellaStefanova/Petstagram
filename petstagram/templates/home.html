@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'base.css' %}">
+{% endblock %}
+
+{% block login_register %}
+    <div class="navigation">
+        <a href="{% url 'register' %}">Register</a>
+        <a href="{% url 'login' %}">Log In</a>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="images">
+    <img src="{% static 'images/animals1.jpg' %}" alt="">
+    <img src="{% static 'images/animals2.jpg' %}" alt="">
+    <img src="{% static 'images/animals3.jpg' %}" alt="">
+    <img src="{% static 'images/animals4.jpg' %}" alt="">
+    <img src="{% static 'images/animals5.jpg' %}" alt="">
+    <img src="{% static 'images/animals6.jpg' %}" alt="">
+    <img src="{% static 'images/animals7.jpg' %}" alt="">
+    <img src="{% static 'images/animals8.jpg' %}" alt="">
+    <img src="{% static 'images/animals9.jpg' %}" alt="">
+</div>
+<div class="text">
+    <p>Hello, fellow animal lovers! Welcome to <span class="site-name">Petstagram</span>, the best site for sharing photos of your pets.</p>
+    <p>We are thrilled to have you join our paw-some community dedicated to all things fluffy, feathery, and finned!</p>
+    <p>Join us now and start sharing your pet photos with the world! <i class="fa-solid fa-paw"></i></p>
+</div>
+<div class="mobile-buttons">
+    <a href="{% url 'register' %}">Register</a>
+    <a href="{% url 'login' %}">Log In</a>
+</div>
+{% endblock %}
