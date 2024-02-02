@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/forms.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="create-user">
+        <form action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ account_form.label_tag }}
+                {{ account_form }}
+            </div>
+            <button class="register-button">Register</button>
+        </form>
+    </div>
+{% endblock %}

@@ -94,6 +94,12 @@
     .mobile-buttons{
         order: 2;
     }
+    .mobile-buttons a:hover{
+        background-color: #592967;
+    }
+    .mobile-buttons a:focus{
+        background-color: #3a1a43;
+    }
 }
 
 @media screen and (min-width: 1101px){
