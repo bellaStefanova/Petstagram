@@ -1,6 +1,7 @@
 from django import http
-from django.db import IntegrityError
 from django.shortcuts import render
+from django.contrib.auth.hashers import check_password
+
 
 from petstagram.accounts.forms import AccountForm, LoginForm
 from petstagram.accounts.models import Account
@@ -8,7 +9,6 @@ from petstagram.accounts.exceptions import EmailExistsError, InvalidEmailFormat,
 
 def register(request):
     if request.method == 'GET':
-        print('get')
         context = {
             'account_form': AccountForm(),
         }
@@ -30,7 +30,6 @@ def register(request):
 
 def login(request):
     if request.method == 'GET':
-        print('get')
         context = {
                     'login_form': LoginForm(),
             }
@@ -40,7 +39,13 @@ def login(request):
         login_form = LoginForm(request.POST)
         email = login_form.data['email']
         password = login_form.data['password']
-        user = Account.objects.get(email=email)
-        if not user:
-            login_form.add_error('email', 'User does not exist')
+        try:
+            user = Account.objects.get(email=email)
+            if check_password(password, user.password):
+                return http.HttpResponseRedirect('to be done')
+            else:
+                login_form.add_error('password', 'Incorrect password')
+                return render(request, 'accounts/login.html', {'login_form': login_form})
+        except Exception as e:
+            login_form.add_error('email', 'User with this email does not exist')
             return render(request, 'accounts/login.html', {'login_form': login_form})
