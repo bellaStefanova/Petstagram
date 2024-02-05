@@ -42,10 +42,13 @@ def login(request):
         try:
             user = Account.objects.get(email=email)
             if check_password(password, user.password):
-                return http.HttpResponseRedirect('to be done')
+                return http.HttpResponseRedirect('home')
             else:
                 login_form.add_error('password', 'Incorrect password')
                 return render(request, 'accounts/login.html', {'login_form': login_form})
         except Exception as e:
             login_form.add_error('email', 'User with this email does not exist')
             return render(request, 'accounts/login.html', {'login_form': login_form})
+
+def account_home(request):
+    return http.HttpResponse('to do account home page')
