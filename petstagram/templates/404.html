@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Caveat&family=Josefin+Slab&family=Pacifico&display=swap');
+    .content *{
+        width: 100%;
+        text-align: center;
+        color: #6b4949;
+        font-family: Josefin Slab;
+    }
+    .content p{
+        font-size: 1.5em;
+    }
+    .content h1{
+        align-self: center;
+    }
+    @media screen and (min-width: 600px){
+        .content{
+            height: 50vh;
+        }}
+</style>
+{% endblock %}
+
+{% block content %}
+    <h1>Page not found</h1>
+    <p>Sorry, the page you are looking for does not exist or is not accessible.</p>
+    <a href="{% url 'common:account_home' %}">Go back to home page</a>
+{% endblock %}

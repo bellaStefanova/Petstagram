@@ -10,26 +10,36 @@
 #     def __str__(self):
 #         return self.username
 
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import User, UserManager
 from django.db import models
-from petstagram.accounts.exceptions import EmailExistsError, InvalidEmailFormat, PasswordError
+from petstagram.accounts.exceptions import (
+        EmailExistsError, 
+        InvalidEmailFormat, 
+        PasswordError,
+        FirstNameError,
+        LastNameError,)
 
 
-class AccountManager(BaseUserManager):
-    def create_user(self, email, password, name, **extra_fields):
+class AccountManager(UserManager):
+    def create_user(self, email, password, username, first_name, last_name, **extra_fields):
         try:
             self.validate_email(email)
             self.validate_password(password)
+            first_name = self.validate_first_name(first_name)
+            last_name = self.validate_last_name(last_name)
         except Exception as e:
             raise e
         
         if Account.objects.filter(email=email).exists():
             raise EmailExistsError()
-        email = self.normalize_email(email)
-        user = self.model(email=email, password=password, username=name, **extra_fields)
-        user.set_password(password)
-        user.save(using=self._db)
-        return user
+
+        return super().create_user(
+            email=email, 
+            password=password, 
+            username=username, 
+            first_name=first_name, 
+            last_name=last_name,
+            **extra_fields)
     
     def validate_email(self, email):
         if Account.objects.filter(email=email).exists():
@@ -58,17 +68,32 @@ class AccountManager(BaseUserManager):
         else:
             return True
     
-class Account(AbstractBaseUser):
-    username = models.CharField(max_length=30)
-    email = models.EmailField(unique=True)
-    password = models.CharField(max_length=30)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    def validate_first_name(self, first_name):
+        if len(first_name.strip()) < 2:
+            raise FirstNameError('First name must be at least 2 characters long')
+        else:
+            return first_name.strip()
+        
+    def validate_last_name(self, last_name):
+        if len(last_name.strip()) < 2:
+            raise LastNameError('Last name must be at least 2 characters long')
+        else:
+            return last_name.strip()
+    
+class Account(User):
+    pets = models.ManyToManyField('pets.Pet', blank=True)
+    profile_picture = models.URLField(blank=True)
+    
+    # username = models.CharField(max_length=30)
+    # email = models.EmailField(unique=True)
+    # password = models.CharField(max_length=30)
+    # created_at = models.DateTimeField(auto_now_add=True)
+    # updated_at = models.DateTimeField(auto_now=True)
     # Add other fields as needed
 
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
+    # is_active = models.BooleanField(default=True)
+    # is_staff = models.BooleanField(default=False)
 
     objects = AccountManager()
 
-    USERNAME_FIELD = 'email'
+    # USERNAME_FIELD = 'email'

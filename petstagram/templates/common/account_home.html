@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/home-page.css' %}">
+{% endblock %}
+
+{% block header %}
+<a href="{% url 'common:account_home' %}">Petstagram</a>
+<a href="{% url 'common:account_home' %}"><i class="fa-solid fa-paw"></i></a>
+<a class="profile-link" href="{% url 'common:view_profile' %}">Profile</a>
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}

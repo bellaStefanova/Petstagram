@@ -4,7 +4,9 @@
 <link rel="stylesheet" href="{% static 'styles/index.css' %}">
 {% endblock %}
 
-{% block login_register %}
+{% block header %}
+<a href="{% url 'index' %}">Petstagram</a>
+<a href="{% url 'index' %}"><i class="fa-solid fa-paw"></i></a>
     <div class="navigation">
         <a href="{% url 'register' %}">Register</a>
         <a href="{% url 'login' %}">Log In</a>

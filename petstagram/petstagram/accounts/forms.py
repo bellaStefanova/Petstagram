@@ -2,15 +2,22 @@ from django import forms
 
 from petstagram.accounts.models import Account
 
-class AccountForm(forms.ModelForm):
+class RegisterForm(forms.ModelForm):
     class Meta:
         model = Account
-        fields = ('username', 'email', 'password')
+        fields = ('username', 'first_name', 'last_name', 'email', 'password', )
         widgets = {
             'password': forms.PasswordInput(),
         }
+        help_texts = {
+            'username': None,
+        }
+        labels = {
+            'email': 'Email',
+        }
 
 class LoginForm(forms.Form):
-    email = forms.EmailField()
+    username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput())
+
         

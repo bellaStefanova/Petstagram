@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/view-profile.css' %}">
+{% endblock %}
+
+{% block header %}
+<a href="{% url 'common:account_home' %}">Petstagram</a>
+<a href="{% url 'common:account_home' %}"><i class="fa-solid fa-paw"></i></a>
+<a href="{% url 'common:view_profile' %}" class="profile-link">Profile</a>
+{% endblock %}
+
+{% block content %}
+<div class="profile-header">
+    <div class="profile-info">
+        <img src="{% static profile_picture %}" alt="">
+        <h1>{{ profile.get_full_name }}</h2>
+    </div>
+    <div class="profile-header-buttons">
+        <a href="#" class="add-pet-button"><i class="fa-solid fa-plus"></i>Add New Pet</a>
+        <a href="#" class="edit-profile-button"><i class="fa-solid fa-pencil"></i>Edit profile</a>
+    </div>
+</div>
+<div class="profile-pets">
+    <h2>My Pets</h2>
+    <div class="pet-cards">
+        {% for pet in pets %}
+        <div class="pet-card">
+            <img src="{% static pet.picture %}" alt="">
+            <h3>{{ pet.name }}</h3>
+            <p>{{ pet.breed }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

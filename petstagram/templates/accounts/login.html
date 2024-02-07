@@ -5,15 +5,22 @@
 <link rel="stylesheet" href="{% static 'styles/forms.css' %}">
 {% endblock %}
 
+{% block header %}
+<a href="{% url 'index' %}">Petstagram</a>
+<a href="{% url 'index' %}"><i class="fa-solid fa-paw"></i></a>
+{% endblock %}
+
 {% block content %}
     <div class="login">
-        <form action="{% url 'login' %}" method="post">
-            {% csrf_token %}
-            <div class="form-group">
-                {{ login_form.label_tag }}
-                {{ login_form }}
-            </div>
-            <button class="login-button">Login</button>
-        </form>
+        <div class="form-container">
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ login_form.label_tag }}
+                    {{ login_form }}
+                </div>
+                <button class="login-button">Login</button>
+            </form>
+        </div>
     </div>
 {% endblock %}
