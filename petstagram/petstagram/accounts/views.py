@@ -79,3 +79,6 @@ def login(request):
             login_form.add_error('username', 'User with this name does not exist')
             return render(request, 'accounts/login.html', context)
 
+def logout(request):
+    auth.logout(request)
+    return redirect(reverse('index'))
