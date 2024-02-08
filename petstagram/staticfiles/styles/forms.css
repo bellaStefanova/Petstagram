@@ -99,6 +99,19 @@ form .login-button:active{
     background-color: #211616;
 }
 
+ul{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+}
+
+ul li{
+    list-style-type: none;
+    color: red;
+    font-size: 0.7em;
+    text-align: left;
+}
 
 @media screen and (min-width: 901px){
     form{
@@ -117,7 +130,13 @@ form .login-button:active{
     form .form-group label{
         width: 30%;
     }
-
+    ul{
+        width: 70%;
+    }
+    ul li{
+        font-size: 0.8em;
+        text-align: right;
+    }
 }
 
 @media screen and (max-width: 601px){

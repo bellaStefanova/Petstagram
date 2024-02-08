@@ -53,5 +53,8 @@ from petstagram.accounts.models import Account
 # account=Account.objects.first()
 # print(account.password)
 
-for acc in Account.objects.all():
-    print(acc.__dict__)
+# Account.objects.all().delete()
+# for acc in Account.objects.all().delete():
+#     print(acc.__dict__)
+
+print([x['username'] for x in Account.objects.all().values('username')])

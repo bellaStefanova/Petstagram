@@ -16,6 +16,13 @@ class RegisterForm(forms.ModelForm):
             'email': 'Email',
         }
 
+    def is_valid(self):
+        if self.data['email'] == '':
+            self.add_error('email', 'Please enter an email address')
+        if ' ' in self.data['username'] and 'username' not in self.errors:
+            self.add_error('username', 'Username cannot contain spaces')
+        return super().is_valid()
+
 class LoginForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput())
