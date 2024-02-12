@@ -14,15 +14,15 @@ class FirstNameValidator:
     
     def __call__(self, value):
 
-        cleaned = self.clean(value)
-
-        #adapt to accept spaces between names
-
-        if not cleaned.isalpha():
-            raise ValidationError('First name must contain only letters')
+        cleaned = self.clean(value).split()
         
-        if len(cleaned) < 2:
-            raise ValidationError('First name must be at least 2 characters long')
+        for name in cleaned:
+
+            if not name.isalpha():
+                raise ValidationError('First name must contain only letters')
+            
+            if len(name) < 2:
+                raise ValidationError('First name must be at least 2 characters long')
         
 class LastNameValidator(FirstNameValidator):
     

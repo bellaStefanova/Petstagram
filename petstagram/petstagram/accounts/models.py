@@ -32,7 +32,7 @@ class AccountManager(UserManager):
 class Account(User):
 
     pets = models.ManyToManyField('pets.Pet', blank=True)
-    profile_picture = models.URLField(blank=True)
+    profile_picture = models.ImageField(upload_to="static/images", null=True, blank=True)
 
     objects = AccountManager()
 

@@ -139,3 +139,6 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 WHITENOISE_AUTOREFRESH = True if DEBUG else False
 WHITENOISE_USE_FINDERS = True
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

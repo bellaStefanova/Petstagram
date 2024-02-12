@@ -16,15 +16,15 @@
 {% endblock %}
 
 {% block content %}
-    <div class="create-user">
+    <div class="login">
         <div class="form-container">
-            <form action="{% url 'register' %}" method="post">
+            <form action="{% url 'sign-in' %}" method="post">
                 {% csrf_token %}
                 <div class="form-group">
-
-                    {{ account_form }}
+                    {{ login_form.label_tag }}
+                    {{ login_form }}
                 </div>
-                <button class="register-button">Register</button>
+                <button class="login-button">Login</button>
             </form>
         </div>
     </div>

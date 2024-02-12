@@ -11,7 +11,7 @@ from petstagram.accounts.forms import RegisterForm, LoginForm
 from .models import Account
 
 
-def register(request):
+def sign_up(request):
     if request.method == 'GET':
         if request.user.is_authenticated:
             raise http.Http404('You are already logged in')
@@ -20,7 +20,7 @@ def register(request):
             'link_in_header': 'index',
             'method': request.method,
         }
-        return render(request, 'accounts/register.html', context)
+        return render(request, 'accounts/sign-up.html', context)
     
     if request.method == 'POST':
         account_form = RegisterForm(request.POST)
@@ -38,21 +38,21 @@ def register(request):
                     account_form.data['first_name'],
                     account_form.data['last_name'])
                 
-                return http.HttpResponseRedirect('login')
+                return http.HttpResponseRedirect('sign-in')
             
             except ValidationError as e:
-                return render(request, 'accounts/register.html', context)
+                return render(request, 'accounts/sign-up.html', context)
         else:
-            return render(request, 'accounts/register.html', context)
+            return render(request, 'accounts/sign-up.html', context)
 
 
-def login(request):
+def sign_in(request):
     if request.method == 'GET':
         context = {
                     'login_form': LoginForm(),
                     'method': request.method,
             }
-        return render(request, 'accounts/login.html', context)
+        return render(request, 'accounts/sign-in.html', context)
     
     if request.method == 'POST':
 
@@ -74,11 +74,11 @@ def login(request):
                 return redirect(reverse('common:account_home'))
             else:
                 login_form.add_error('password', 'Incorrect password')
-                return render(request, 'accounts/login.html', context)
+                return render(request, 'accounts/sign-in.html', context)
         except Exception as e:
             login_form.add_error('username', 'User with this name does not exist')
-            return render(request, 'accounts/login.html', context)
+            return render(request, 'accounts/sign-in.html', context)
 
-def logout(request):
+def sign_out(request):
     auth.logout(request)
     return redirect(reverse('index'))

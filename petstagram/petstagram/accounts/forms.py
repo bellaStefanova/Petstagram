@@ -21,6 +21,10 @@ class RegisterForm(forms.ModelForm):
             self.add_error('email', 'Please enter an email address')
         if ' ' in self.data['username'] and 'username' not in self.errors:
             self.add_error('username', 'Username cannot contain spaces')
+        if self.data['first_name'] == '':
+            self.add_error('first_name', 'Please enter your first name')
+        if self.data['last_name'] == '':
+            self.add_error('last_name', 'Please enter your last name')
         return super().is_valid()
 
 class LoginForm(forms.Form):
