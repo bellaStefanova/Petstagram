@@ -21,8 +21,8 @@
             <form action="{% url 'sign-in' %}" method="post">
                 {% csrf_token %}
                 <div class="form-group">
-                    {{ login_form.label_tag }}
-                    {{ login_form }}
+                    {{ form.label_tag }}
+                    {{ form }}
                 </div>
                 <button class="login-button">Login</button>
             </form>

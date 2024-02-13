@@ -21,8 +21,8 @@ class FirstNameValidator:
             if not name.isalpha():
                 raise ValidationError('First name must contain only letters')
             
-            if len(name) < 2:
-                raise ValidationError('First name must be at least 2 characters long')
+        if len(value) < 2:
+            raise ValidationError('First name must be at least 2 characters long')
         
 class LastNameValidator(FirstNameValidator):
     
