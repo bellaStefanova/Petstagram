@@ -57,4 +57,9 @@ from petstagram.accounts.models import Account
 # for acc in Account.objects.all().delete():
 #     print(acc.__dict__)
 
-print([x['username'] for x in Account.objects.all().values('username')])
+# print([x['username'] for x in Account.objects.all().values('username')])
+from petstagram.common.models import ProfilePhotos
+
+for model in ProfilePhotos.objects.all():
+    print(model.__dict__)
+    print(model.user.__dict__)

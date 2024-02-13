@@ -12,18 +12,31 @@
 .profile-header .profile-info{
     display: flex;
     flex-wrap: wrap;
+    /* position: absolute; */
     /* flex-direction: column; */
     width: 50%;
     align-items: end;
+    position: relative;
 }
 
-.profile-header .profile-info img{
+.profile-header .profile-info .image-container{
     width: 30%;
-    height: auto;
-    background-color: #f5f5f5;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+
     border-radius: 50%;
     border: 2px solid white;
-    margin-top: 10%;
+}
+
+.profile-header .profile-info .image-container img{
+    width: 100%;
+    height: auto;
+    /* z-index: 0; */
+    /* aspect-ratio: 1/1; */
+    /* background-color: #f5f5f5; */
+    /* border-radius: 50%;
+    border: 2px solid white; */
+    /* margin-top: 10%; */
 }
 
 .profile-header .profile-info h1{
@@ -32,6 +45,22 @@
     font-family: 'Josefin Slab', serif;
     font-weight: bold;
     width: 60%;
+}
+
+.profile-header .profile-info a{
+    position: absolute;
+    left: 23%;
+    top: 80%;
+    font-size: 1em;
+    text-decoration: none;
+    color: black;
+    background-color: lightgray;
+    border-radius: 50px;
+    padding: 0.4em;
+}
+
+.profile-header .profile-info .image-container a:hover{
+    background-color: gray;
 }
 
 .profile-header .profile-header-buttons{

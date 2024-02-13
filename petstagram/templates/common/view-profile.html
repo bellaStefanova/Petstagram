@@ -14,7 +14,11 @@
 {% block content %}
 <div class="profile-header">
     <div class="profile-info">
-        <img src="{% static profile_picture %}" alt="">
+        <div class="image-container">
+            <img src="{{ profile_picture }}" alt="">
+        </div>
+            <a href="{% url 'common:add_profile_picture' %}"><i class="fa-solid fa-camera-retro"></i></a>
+
         <h1>{{ profile.get_full_name }}</h2>
     </div>
     <div class="profile-header-buttons">
