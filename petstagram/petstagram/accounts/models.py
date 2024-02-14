@@ -31,7 +31,7 @@ class AccountManager(UserManager):
 
 class Account(User):
 
-    pets = models.ManyToManyField('pets.Pet', blank=True)
+    # pets = models.ManyToManyField('pets.Pet', blank=True)
     profile_picture = models.URLField(null=True, blank=True)
 
     objects = AccountManager()

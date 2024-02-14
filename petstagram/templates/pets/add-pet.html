@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block meta %}
+<meta id="request-method" name="request-method" content="{{ method }}">
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/forms.css' %}">
+<script src="{% static 'scripts/forms.js' %}"></script>
+{% endblock %}
+
+{% block header %}
+<a href="{% url 'index' %}">Petstagram</a>
+<a href="{% url 'index' %}"><i class="fa-solid fa-paw"></i></a>
+{% endblock %}
+
+{% block content %}
+    <div class="add-pet">
+        <div class="form-container">
+            <form action="{% url 'pets:add_pet' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+
+                    {{ form }}
+                </div>
+                <button class="save-button">Save pet</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

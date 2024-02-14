@@ -9,6 +9,7 @@ from django.core.files.base import ContentFile
 import uuid
 
 from petstagram.accounts.models import Account
+from petstagram.pets.models import Pet
 from .models import ProfilePhotos
 from .forms import ProfilePhotoForm
 
@@ -16,13 +17,17 @@ def account_home(request):
     return render(request, 'common/account_home.html')
     # return http.HttpResponse('to do account home page')
 
+
+
 def view_profile(request):
     username = request.user
     user = Account.objects.get(username=username)
     context= {
         'profile': user,
         'full_name': user.get_full_name(),
-        'profile_picture': os.path.join(settings.MEDIA_URL, user.profile_picture) if user.profile_picture else 'images/add-profile-picture.jpg',
+        'pets': Pet.objects.filter(user=user),
+        'profile_picture': os.path.join(settings.MEDIA_URL, 'profile_photos/', user.profile_picture) if 
+        user.profile_picture else os.path.join(settings.STATIC_URL, 'images/add-profile-picture.jpg'),
     }
     return render(request, 'common/view-profile.html', context)
 
@@ -34,7 +39,7 @@ class AddProflePictureView(views.FormView):
     def form_valid(self, form):
         request = self.request
         unique_filename = f"{uuid.uuid4()}{os.path.splitext(request.FILES['image'].name)[1]}"
-        file_path = os.path.join(settings.MEDIA_ROOT, unique_filename)
+        file_path = os.path.join(settings.MEDIA_ROOT, 'profile_photos/', unique_filename)
         default_storage.save(file_path, ContentFile(request.FILES['image'].read()))
         instance = form.save(commit=False)
         instance.image = unique_filename

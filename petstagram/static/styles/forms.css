@@ -7,7 +7,8 @@
 
 .create-user,
 .login
-.upload-photo{
+.upload-photo,
+.add-pet{
     display: flex;
     overflow: hidden;
     margin-top: 20px;
@@ -58,7 +59,8 @@ form .form-group label{
     width: 100%;
 }
 
-form .form-group input{
+form .form-group input,
+form .form-group select{
     height: 30px;
     margin-top: 0.5em;
     background-color: #F5F5F5;
@@ -74,7 +76,12 @@ form .form-group input:active,
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
-input:-webkit-autofill:active{
+input:-webkit-autofill:active,
+form .form-group select:active,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus,
+select:-webkit-autofill:active{
     -webkit-text-fill-color: #6b4949;
     -webkit-background-origin: #F5F5F5;
     -webkit-box-shadow: 0 0 0 30px #F5F5F5 inset;
@@ -83,7 +90,8 @@ input:-webkit-autofill:active{
 
 form .register-button,
 form .login-button,
-form .upload-button{
+form .upload-button,
+form .save-button{
     margin: 3em 0 5em 0;
     padding: 1em;
     background-color: #6b4949;
@@ -95,13 +103,15 @@ form .upload-button{
 
 form .register-button:hover,
 form .login-button:hover,
-form .upload-button:hover{
+form .upload-button:hover,
+form .save-button:hover{
     background-color: #3e2a2a;
 }
 
 form .register-button:active,
 form .login-button:active,
-form .upload-button:active{
+form .upload-button:active,
+form .save-button:active{
     background-color: #211616;
 }
 
@@ -129,16 +139,19 @@ textarea{
         margin-top: 2em;
     }
 
-    .upload-photo form{
+    .upload-photo form,
+    .add-pet form{
         width: 30rem;
     }
-    form .form-group input{
+    form .form-group input,
+    form .form-group select{
         height: 35px;
     }
 
     .login,
     .create-user,
-    .upload-photo{
+    .upload-photo,
+    .add-pet{
         margin-top: 30px;
     }
 
@@ -157,7 +170,8 @@ textarea{
 @media screen and (max-width: 601px){
     .login,
     .create-user,
-    .upload-photo{
+    .upload-photo,
+    .add-pet{
         width: 90%;
     }
     /* form{

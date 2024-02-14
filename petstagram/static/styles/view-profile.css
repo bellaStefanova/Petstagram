@@ -1,12 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat&family=Josefin+Slab&family=Pacifico&display=swap');
 
+.page{
+    align-items: center;
+}
+
+.content{
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    border: 1px solid #e6e6e6;
+    width: 96%;
+    font-family: 'Josefin Slab', serif;
+}
+
 .profile-header{
     display: flex;
     width: 100%;
-    padding-left: 10%;
+    margin: 5% 5%;
+    padding: 0 5% 2% 5%;
     flex-wrap: wrap;
     justify-content: space-between;
-    height: 220px;
+    /* height: 220px; */
+    border-bottom: 1px solid darkgray;
 }
 
 .profile-header .profile-info{
@@ -49,8 +63,8 @@
 
 .profile-header .profile-info a{
     position: absolute;
-    left: 23%;
-    top: 80%;
+    left: 22%;
+    top: 75%;
     font-size: 1em;
     text-decoration: none;
     color: black;
@@ -66,16 +80,82 @@
 .profile-header .profile-header-buttons{
     display: flex;
     flex-wrap: wrap;
-    width: 25%;
+    width: 28%;
     align-items: end;
+    justify-content: space-between;
+}
+
+.profile-header .profile-header-buttons a{
+
+    text-decoration: none;
+    text-align: center;
+    padding: 0.4em;
+    background-color: #6b4949;
+    color: #fffaef;
+    width: 8rem;
+    border: solid 1px #6b4949;
+    border-radius: 5px;
 }
 
 .profile-pets{
     width: 100%;
+    margin: 0 5% 5% 5%;
+    padding: 0 5%;
+    /* margin-top: 2em; */
+    font-family: 'Josefin Slab', serif;;
+    border-bottom: 1px solid darkgray;
 }
 
-.content{
-    border: 1px solid black;
-    padding:0;
-    margin: 16px;
+.profile-pets h2{
+    text-indent: 1em;
+    padding-bottom: 1em;
+    font-size: 2em;
 }
+
+.profile-pets .pet-cards{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.profile-pets .add-pet,
+.profile-pets .pet-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1em;
+    width: 10%;
+    gap: 1em;
+}
+
+.profile-pets .pet-card{
+    overflow: hidden;
+}
+
+.profile-pets .pet-card a{
+    text-align: center;
+}
+
+.profile-pets .pet-card a img{
+    width: 90%;
+    aspect-ratio: 1/1;
+    border: 1.5px solid rgb(125, 95, 95);
+    border-radius: 50px;
+}
+
+.profile-pets .add-pet a{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 3em;
+    color: gray;
+    background-color: lightgray;
+    width: 90%;
+    aspect-ratio: 1/1;
+    border: 1px solid white;
+    border-radius: 50px;
+    text-align: center;
+    
+}
+

@@ -22,21 +22,35 @@
         <h1>{{ profile.get_full_name }}</h2>
     </div>
     <div class="profile-header-buttons">
-        <a href="#" class="add-pet-button"><i class="fa-solid fa-plus"></i>Add New Pet</a>
-        <a href="#" class="edit-profile-button"><i class="fa-solid fa-pencil"></i>Edit profile</a>
-        <a href="{% url 'sign-out' %}" class="logout-button"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
+        <a href="#" class="edit-profile-button"><i class="fa-solid fa-pencil"></i> Edit profile</a>
+        <a href="{% url 'sign-out' %}" class="logout-button"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
     </div>
 </div>
 <div class="profile-pets">
     <h2>My Pets</h2>
     <div class="pet-cards">
+        
         {% for pet in pets %}
         <div class="pet-card">
-            <img src="{% static pet.picture %}" alt="">
+            <a href="{% url 'pets:edit_pet' %}"><img src="{{ pet.main_image }}" alt=""></a>
             <h3>{{ pet.name }}</h3>
-            <p>{{ pet.breed }}</p>
         </div>
         {% endfor %}
+        <div class="add-pet">
+            <a href="{% url 'pets:add_pet' %}"><i class="fa-solid fa-plus"></i></a>
+            <h3>Add pet</h3>
+        </div>
     </div>
+</div>
+<div class="profile-posts">
+    <h2>My Posts</h2>
+    <!-- <div class="post-cards">
+        {% for post in posts %}
+        <div class="post-card">
+            <img src="{{ post.image }}" alt="">
+            <h3>{{ post.title }}</h3>
+        </div>
+        {% endfor %}
+    </div> -->
 </div>
 {% endblock %}

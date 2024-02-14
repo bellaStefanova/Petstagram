@@ -8,9 +8,12 @@ from django.contrib.auth.hashers import (
 )
 from django.contrib.auth import authenticate
 
+
+
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "petstagram.settings")
 django.setup()
 from petstagram.accounts.models import Account
+from petstagram.pets.models import Pet
 
 # accounts=Account.objects.all()
 # for account in accounts:
@@ -60,6 +63,11 @@ from petstagram.accounts.models import Account
 # print([x['username'] for x in Account.objects.all().values('username')])
 from petstagram.common.models import ProfilePhotos
 
-for model in ProfilePhotos.objects.all():
-    print(model.__dict__)
-    print(model.user.__dict__)
+# for user in Account.objects.all():
+#     print(user.pets.all())
+    # print(model.user.__dict__)
+
+for pet in Pet.objects.all():
+    print(pet.__dict__)
+
+Pet.objects.all().delete()

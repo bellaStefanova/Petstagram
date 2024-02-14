@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block meta %}
+<meta id="request-method" name="request-method" content="{{ method }}">
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/forms.css' %}">
+<script src="{% static 'scripts/forms.js' %}"></script>
+{% endblock %}
+
+{% block header %}
+<a href="{% url 'index' %}">Petstagram</a>
+<a href="{% url 'index' %}"><i class="fa-solid fa-paw"></i></a>
+{% endblock %}
+
+{% block content %}
+<div class="edit-pet-block">
+    <div class="upload-photo">
+        <p>Upload a new photo of your pet</p>
+        <form action="{% url 'pets:edit_pet' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="image" id="image">
+            <button class="upload-button">Upload</button>
+    </div>
+    <br>
+    <div class="change-pet-name">
+        <p>Change your pet's details</p>
+        <form action="{% url 'pets:edit_pet' %}" method="post">
+            {% csrf_token %}
+            <button class="change-name-button">Change</button>
+    </div>
+    <br>
+</div>
+{% endblock %}
