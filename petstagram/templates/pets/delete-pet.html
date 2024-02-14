@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/delete-pet.css' %}">
+{% endblock %}
+
+{% block header %}
+<a href="{% url 'index' %}">Petstagram</a>
+<a href="{% url 'index' %}"><i class="fa-solid fa-paw"></i></a>
+{% endblock %}
+
+{% block content %}
+    <div class="delete-pet">
+        <p>Are you sure you want to delete {{ pet.name }}?</p>
+        
+        <form action="{% url 'pets:delete_pet' pk=pet.id %}" method="post">
+            
+            <a href="{% url 'common:view_profile' %}">Cancel</a>
+            {% csrf_token %}
+            <button class="delete-button">Delete</button>
+        </form>
+        
+    </div>
+{% endblock %}

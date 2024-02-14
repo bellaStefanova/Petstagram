@@ -44,4 +44,4 @@ class LoginForm(forms.Form):
             self.add_error('username', 'User with this name does not exist')
             
         return super().is_valid()
-        
+    

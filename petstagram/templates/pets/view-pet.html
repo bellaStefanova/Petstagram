@@ -12,21 +12,21 @@
 {% endblock %}
 
 {% block content %}
-<div class="profile-header">
-    <div class="profile-info">
+<div class="pet-header">
+    <div class="pet-info">
         <div class="image-container">
-            <img src="{{ profile_picture }}" alt="">
+            <img src="{{ pet.main_image }}" alt="">
         </div>
-            <a href="{% url 'common:add_profile_picture' %}"><i class="fa-solid fa-camera-retro"></i></a>
+            <!-- <a href="{% url 'common:add_profile_picture' %}"><i class="fa-solid fa-camera-retro"></i></a> -->
 
-        <h1>{{ profile.get_full_name }}</h2>
+        <h1>{{ pet.name }}</h2>
     </div>
-    <div class="profile-header-buttons">
-        <a href="#" class="edit-profile-button"><i class="fa-solid fa-pencil"></i> Edit profile</a>
-        <a href="{% url 'sign-out' %}" class="logout-button"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
+    <div class="pet-header-buttons">
+        <a href="{% url 'pets:edit_pet' pk=pet.id %}" class="edit-pet-button"><i class="fa-solid fa-pencil"></i> Edit pet</a>
+        <a href="{% url 'pets:delete_pet' pk=pet.id %}" class="delete-pet-button"><i class="fa-regular fa-trash-can"></i> Delete Pet</a>
     </div>
 </div>
-<div class="profile-pets">
+<!-- <div class="profile-pets">
     <h2>My Pets</h2>
     <div class="pet-cards">
         
@@ -41,16 +41,6 @@
             <h3>Add pet</h3>
         </div>
     </div>
-</div>
-<div class="profile-posts">
-    <h2>My Posts</h2>
-    <!-- <div class="post-cards">
-        {% for post in posts %}
-        <div class="post-card">
-            <img src="{{ post.image }}" alt="">
-            <h3>{{ post.title }}</h3>
-        </div>
-        {% endfor %}
-    </div> -->
-</div>
+</div> -->
+
 {% endblock %}

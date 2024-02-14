@@ -12,7 +12,8 @@
     font-family: 'Josefin Slab', serif;
 }
 
-.profile-header{
+.profile-header,
+.pet-header{
     display: flex;
     width: 100%;
     margin: 5% 5%;
@@ -23,7 +24,8 @@
     border-bottom: 1px solid darkgray;
 }
 
-.profile-header .profile-info{
+.profile-header .profile-info,
+.pet-header .pet-info{
     display: flex;
     flex-wrap: wrap;
     /* position: absolute; */
@@ -33,7 +35,8 @@
     position: relative;
 }
 
-.profile-header .profile-info .image-container{
+.profile-header .profile-info .image-container,
+.pet-header .pet-info .image-container{
     width: 30%;
     aspect-ratio: 1/1;
     overflow: hidden;
@@ -42,7 +45,8 @@
     border: 2px solid white;
 }
 
-.profile-header .profile-info .image-container img{
+.profile-header .profile-info .image-container img,
+.pet-header .pet-info .image-container img{
     width: 100%;
     height: auto;
     /* z-index: 0; */
@@ -53,7 +57,8 @@
     /* margin-top: 10%; */
 }
 
-.profile-header .profile-info h1{
+.profile-header .profile-info h1,
+.pet-header .pet-info h1{
     text-align: center;
     padding-top: 5%;
     font-family: 'Josefin Slab', serif;
@@ -61,7 +66,8 @@
     width: 60%;
 }
 
-.profile-header .profile-info a{
+.profile-header .profile-info a,
+.pet-header .pet-info a{
     position: absolute;
     left: 22%;
     top: 75%;
@@ -73,11 +79,13 @@
     padding: 0.4em;
 }
 
-.profile-header .profile-info .image-container a:hover{
+.profile-header .profile-info .image-container a:hover,
+.pet-header .pet-info .image-container a:hover{
     background-color: gray;
 }
 
-.profile-header .profile-header-buttons{
+.profile-header .profile-header-buttons,
+.pet-header .pet-header-buttons{
     display: flex;
     flex-wrap: wrap;
     width: 28%;
@@ -85,7 +93,8 @@
     justify-content: space-between;
 }
 
-.profile-header .profile-header-buttons a{
+.profile-header .profile-header-buttons a,
+.pet-header .pet-header-buttons a{
 
     text-decoration: none;
     text-align: center;
@@ -115,6 +124,8 @@
 .profile-pets .pet-cards{
     display: flex;
     flex-wrap: wrap;
+    gap: 0.5em;
+    /* justify-content: space-between; */
 }
 
 .profile-pets .add-pet,

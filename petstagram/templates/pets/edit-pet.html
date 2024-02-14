@@ -19,7 +19,7 @@
 <div class="edit-pet-block">
     <div class="upload-photo">
         <p>Upload a new photo of your pet</p>
-        <form action="{% url 'pets:edit_pet' %}" method="post" enctype="multipart/form-data">
+        <form action="{% url 'pets:edit_pet' pk=pet.id %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <input type="file" name="image" id="image">
             <button class="upload-button">Upload</button>
@@ -27,7 +27,7 @@
     <br>
     <div class="change-pet-name">
         <p>Change your pet's details</p>
-        <form action="{% url 'pets:edit_pet' %}" method="post">
+        <form action="{% url 'pets:edit_pet' pk=pet.id %}" method="post">
             {% csrf_token %}
             <button class="change-name-button">Change</button>
     </div>

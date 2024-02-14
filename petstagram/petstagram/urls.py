@@ -12,7 +12,7 @@ urlpatterns = [
     path('', index, name = 'index'),
     path('', include('petstagram.accounts.urls')),
     path('', include(('petstagram.common.urls', 'common'), namespace='common')),
-    path('', include(('petstagram.pets.urls', 'common'), namespace='pets')),
+    path('', include(('petstagram.pets.urls', 'pets'), namespace='pets')),
 ]
 
 # to create apps photos, pets, common

@@ -64,10 +64,10 @@ from petstagram.pets.models import Pet
 from petstagram.common.models import ProfilePhotos
 
 # for user in Account.objects.all():
-#     print(user.pets.all())
+#     print(user.__dict__)
     # print(model.user.__dict__)
 
 for pet in Pet.objects.all():
-    print(pet.__dict__)
+    print(pet.name)
 
-Pet.objects.all().delete()
+# Pet.objects.all().delete()
