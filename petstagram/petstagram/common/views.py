@@ -7,6 +7,7 @@ from django.views import generic as views
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
 import uuid
+from django.db.models import Q
 
 from petstagram.accounts.models import Account
 from petstagram.pets.models import Pet
@@ -48,7 +49,7 @@ class AddProflePictureView(views.FormView):
             photo.used_currently = False
             photo.save()
         instance.used_currently = True
-        instance.user.profile_picture = unique_filename
+        instance.user.profile_picture = os.path.join(settings.MEDIA_URL, 'profile_photos/', unique_filename)
         instance.user.save()
         instance.save()
         return super().form_valid(form)
@@ -60,6 +61,24 @@ class AddProflePictureView(views.FormView):
    
     def get_success_url(self):
         return reverse('common:account_home')
+    
+class SearchView(views.ListView):
+    template_name = 'common/search.html'
+    model = Account
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['profile_picture'] = os.path.join(settings.MEDIA_URL, 'profile_photos/', self.model.objects.get(username=self.request.user).profile_picture)
+        return context
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        print(queryset)
+        queryset = queryset.filter(Q(username__icontains=self.request.GET.get('q', None)) |
+                                   Q(first_name__icontains=self.request.GET.get('q', None)) |
+                                   Q(last_name__icontains=self.request.GET.get('q', None)))
+        return queryset
+    
 
 # to do
 # def upload_profile_picture(request):

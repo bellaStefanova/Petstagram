@@ -63,11 +63,14 @@ from petstagram.pets.models import Pet
 # print([x['username'] for x in Account.objects.all().values('username')])
 from petstagram.common.models import ProfilePhotos
 
-# for user in Account.objects.all():
-#     print(user.__dict__)
+for user in Account.objects.all():
+    if 'john' in user.username.lower() or 'john' in user.first_name.lower() or 'john' in user.last_name.lower():
+        user.profile_picture = '/static/images/add-profile-picture.jpg'
+        user.save()
+    print(user.__dict__)
     # print(model.user.__dict__)
 
-for pet in Pet.objects.all():
-    print(pet.name)
+# for pet in Pet.objects.all():
+#     print(pet.name)
 
 # Pet.objects.all().delete()

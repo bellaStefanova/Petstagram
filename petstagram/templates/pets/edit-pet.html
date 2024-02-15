@@ -6,8 +6,7 @@
 {% endblock %}
 
 {% block styles %}
-<link rel="stylesheet" href="{% static 'styles/forms.css' %}">
-<script src="{% static 'scripts/forms.js' %}"></script>
+<link rel="stylesheet" href="{% static 'styles/edit-pet.css' %}">
 {% endblock %}
 
 {% block header %}
@@ -16,20 +15,19 @@
 {% endblock %}
 
 {% block content %}
+<h1>{{ pet.name }}'s edit page</h1>
 <div class="edit-pet-block">
     <div class="upload-photo">
-        <p>Upload a new photo of your pet</p>
+        <p>Change {{ pet.name }}'s profile picture</p>
         <form action="{% url 'pets:edit_pet' pk=pet.id %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <input type="file" name="image" id="image">
             <button class="upload-button">Upload</button>
     </div>
     <br>
-    <div class="change-pet-name">
-        <p>Change your pet's details</p>
-        <form action="{% url 'pets:edit_pet' pk=pet.id %}" method="post">
-            {% csrf_token %}
-            <button class="change-name-button">Change</button>
+    <div class="change-pet-details">
+        <p>Change {{ pet.name }}'s details</p>
+        <a href="{% url 'pets:edit_pet_details' pk=pet.id %}">Change details</a>
     </div>
     <br>
 </div>

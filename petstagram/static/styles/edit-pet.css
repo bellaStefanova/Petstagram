@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Josefin+Slab&family=Pacifico&display=swap');
+
+@import url('https://use.fontawesome.com/releases/v6.0.0/css/all.css');
+
+.content{
+    font-family: 'Josefin Slab', serif;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.content h1{
+    padding: 1em 0;
+}
+
+.edit-pet-block{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow: hidden;
+    align-items: center;
+    width: 40%;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    padding: 1em 0;
+}

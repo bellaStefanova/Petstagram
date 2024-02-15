@@ -7,6 +7,9 @@
 
 {% block header %}
 <a href="{% url 'common:account_home' %}">Petstagram</a>
+<form action="{% url 'common:search' %}" method="get">
+    <input type="text" name="q" id="search" placeholder="Search...">
+</form>
 <a href="{% url 'common:account_home' %}"><i class="fa-solid fa-paw"></i></a>
 <a class="profile-link" href="{% url 'common:view_profile' %}">Profile</a>
 {% endblock %}

@@ -1,3 +1,5 @@
+import os
+from django.conf import settings
 from django.contrib.auth.models import User, UserManager
 from django.db import models
 from .validators import (
@@ -17,8 +19,11 @@ class AccountManager(UserManager):
                           first_name = first_name,
                           last_name = last_name,
                           **extra_fields)
+        
 
         user.full_clean()
+        profile_picture = os.path.join(settings.STATIC_URL, 'images/add-profile-picture.jpg')
+        print(os.path.join(settings.STATIC_URL, 'images/add-profile-picture.jpg'))
 
         return super().create_user(
             email=email, 
@@ -26,6 +31,7 @@ class AccountManager(UserManager):
             username=username, 
             first_name=first_name, 
             last_name=last_name,
+            profile_picture = profile_picture,
             **extra_fields)
     
 

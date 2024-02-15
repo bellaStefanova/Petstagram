@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block header %}
+<a href="{% url 'index' %}">Petstagram</a>
+<a href="{% url 'index' %}"><i class="fa-solid fa-paw"></i></a>
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/search.css' %}">
+{% endblock %}
+
+{% block content %}
+<h1>Search Results</h1>
+<div class="users-block">
+    {% for user in object_list %}
+        <div class="user-view">
+            <div class="user-picture">
+                <img src="{{ user.profile_picture }}" alt="">
+            </div>
+            <a href="#">{{ user.get_full_name }}</a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+
